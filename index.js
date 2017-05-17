@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var model;
 
 try {
-    model = mongoose.model('VehicleMake') || require('./model');
+    model = mongoose.model('vehicle-makes') || require('./model');
 } catch (e) {
     model = require('./model');
 }
