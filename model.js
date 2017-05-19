@@ -1,4 +1,4 @@
-var log = require('logger')('vehicle-make');
+var log = require('logger')('model-vehicle-makes');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -21,6 +21,7 @@ make.set('toJSON', {
     //virtuals: false,
     transform: function (doc, ret, options) {
         delete ret._id;
+        delete ret.__v;
     }
 });
 
