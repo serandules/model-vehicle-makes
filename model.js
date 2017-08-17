@@ -2,11 +2,10 @@ var log = require('logger')('model-vehicle-makes');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var mongins = require('mongins');
 var types = require('validators').types;
 
 var make = Schema({
-    has: {type: Object, default: {}},
-    allowed: {type: Object, default: {}},
     title: {
         type: String,
         required: true,
@@ -15,6 +14,11 @@ var make = Schema({
         })
     }
 }, {collection: 'vehicle-makes'});
+
+make.plugin(mongins);
+make.plugin(mongins.user);
+make.plugin(mongins.createdAt);
+make.plugin(mongins.updatedAt);
 
 make.set('toJSON', {
     getters: true,
