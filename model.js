@@ -20,17 +20,4 @@ make.plugin(mongins.user);
 make.plugin(mongins.createdAt);
 make.plugin(mongins.updatedAt);
 
-make.set('toJSON', {
-    getters: true,
-    //virtuals: false,
-    transform: function (doc, ret, options) {
-        delete ret._id;
-        delete ret.__v;
-    }
-});
-
-make.virtual('id').get(function () {
-    return this._id;
-});
-
 module.exports = mongoose.model('vehicle-makes', make);
