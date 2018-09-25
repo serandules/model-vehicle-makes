@@ -17,7 +17,7 @@ var make = Schema({
 
 make.plugin(mongins);
 make.plugin(mongins.user);
-make.plugin(mongins.createdAt);
-make.plugin(mongins.updatedAt);
+make.plugin(mongins.createdAt());
+make.plugin(mongins.updatedAt());
 
 module.exports = mongoose.model('vehicle-makes', make);
