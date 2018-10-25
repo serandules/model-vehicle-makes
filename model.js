@@ -16,7 +16,7 @@ var make = Schema({
     }
 }, {collection: 'vehicle-makes'});
 
-make.plugin(mongins);
+make.plugin(mongins());
 make.plugin(mongins.user);
 make.plugin(mongins.createdAt());
 make.plugin(mongins.updatedAt());
