@@ -3,8 +3,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var mongins = require('mongins');
-var mongutils = require('mongutils');
-var types = require('validators').types;
+var validators = require('validators');
+var model = require('model');
+
+var types = validators.types;
 
 var make = Schema({
     title: {
@@ -21,7 +23,7 @@ make.plugin(mongins.user);
 make.plugin(mongins.createdAt());
 make.plugin(mongins.updatedAt());
 
-mongutils.ensureIndexes(make, [
+model.ensureIndexes(make, [
   {createdAt: -1, _id: -1}
 ]);
 
