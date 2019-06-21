@@ -8,7 +8,7 @@ var model = require('model');
 
 var types = validators.types;
 
-var make = Schema({
+var schema = Schema({
     title: {
         type: String,
         required: true,
@@ -18,13 +18,22 @@ var make = Schema({
     }
 }, {collection: 'vehicle-makes'});
 
-make.plugin(mongins());
-make.plugin(mongins.user);
-make.plugin(mongins.createdAt());
-make.plugin(mongins.updatedAt());
+schema.plugin(mongins());
+schema.plugin(mongins.user);
+schema.plugin(mongins.permissions({
+    workflow: 'model'
+}));
+schema.plugin(mongins.status({
+    workflow: 'model'
+}));
+schema.plugin(mongins.visibility({
+    workflow: 'model'
+}));
+schema.plugin(mongins.createdAt());
+schema.plugin(mongins.updatedAt());
 
-model.ensureIndexes(make, [
+model.ensureIndexes(schema, [
   {createdAt: -1, _id: -1}
 ]);
 
-module.exports = mongoose.model('vehicle-makes', make);
+module.exports = mongoose.model('vehicle-makes', schema);
